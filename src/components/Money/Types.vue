@@ -22,8 +22,7 @@ export default class Types extends Vue {
   // eslint-disable-next-line no-undef
   @Prop(Number)  propA: number | undefined
 
-
-  selectType(type) {
+  selectType(type: string) {
     if (type !== '-' && type !== '+') {
       throw new Error('type is unknown')
     }
