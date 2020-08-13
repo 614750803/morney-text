@@ -6,9 +6,9 @@
     <div class="notes">
       <FormItem field-name="备注"
                 placeholder="在这里输入备注"
-                @update:value="onUpdateNotes"/>
+                :value.sync="record.notes" />
     </div>
-    <Tags/>
+    <Tags @update:value="record.tags = $event"/>
   </Layout>
 </template>
 
@@ -23,7 +23,7 @@ import recordTypeList from '@/constants/recordTypeList';
 
 
 @Component({
-  components: {Tabs, Tags, FormItem,  NumberPad},
+  components: {Tabs, Tags, FormItem, NumberPad},
 })
 export default class Money extends Vue {
   get recordList() {
@@ -35,8 +35,9 @@ export default class Money extends Vue {
   record: RecordItem = {
     tags: [], notes: '', type: '-', amount: 0
   };
-  created(){
-    this.$store.commit('fetchRecords')
+
+  created() {
+    this.$store.commit('fetchRecords');
   }
 
 
@@ -54,6 +55,9 @@ export default class Money extends Vue {
 
   saveRecord() {
     this.$store.commit('createRecord', this.record);
+    if (this.$store.state.createRecordError === null) {
+      this.record.notes = '';
+    }
   }
 }
 
