@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <div id="app">
     <router-view/>
     <hr/>
 
   </div>
 </template>
-
 
 <style lang="scss">
 @import "~@/assets/style/reset.scss";
@@ -20,4 +19,9 @@ body {
   font-size: 14px;
   background: #f5f5f5
 }
+#app {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 </style>
