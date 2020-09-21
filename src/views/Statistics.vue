@@ -72,11 +72,11 @@ export default class Statistics extends Vue {
       // this.recordList = [{date:7.3, value:100}, {date:7.2, value:200}]
       const dateString = day(today)
           .subtract(i, 'day').format('YYYY-MM-DD');
-      const found = _.find(this.recordList, {
-        createdAt: dateString
+      const found = _.find(this.groupedList, {
+        title: dateString
       });
       array.push({
-        key: dateString, value: found ? found.amount : 0
+        key: dateString, value: found ? found.total : 0
       });
     }
     array.sort((a, b) => {
@@ -116,10 +116,10 @@ export default class Statistics extends Vue {
       series: [{
         symbol: 'circle',
         symbolSize: 12,
-        itemStyle: {borderWidth: 1, color: '#666', borderColor: '#666'},
+        itemStyle: {borderWidth: 1, color: '#23af66', borderColor: 'green'},
         // lineStyle: {width: 10},
         data: values,
-        type: 'line'
+        type: 'bar'
       }],
       tooltip: {
         show: true, triggerOn: 'click',
@@ -195,10 +195,10 @@ export default class Statistics extends Vue {
 }
 
 ::v-deep .type-tabs-item {
-  background: #c4c4c4;
+  background: #dce0dd;
 
   &.selected {
-    background: white;
+    background: #6ae7a6;
 
     &::after {
       display: none;
