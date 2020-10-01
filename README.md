@@ -1,4 +1,4 @@
-# morney
+# 随手记
 
 ## Project setup
 ```
